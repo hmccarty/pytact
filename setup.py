@@ -1,11 +1,10 @@
-from glob import glob
-from setuptools import setup
+from setuptools import setup, find_packages
 from pybind11.setup_helpers import Pybind11Extension
 
 ext_modules = [
     Pybind11Extension(
-        "pytact_pybind",
-        sorted(glob("pytact_pybind/*.cpp")),
+        "marker_util",
+        ["pytact_pybind/matching.cpp"],
     ),
 ]
 
@@ -14,5 +13,5 @@ setup(name='Pytact',
     description='Visuo-tactile sensor interface',
     author='Harrison McCarty',
     author_email='hmccarty@pm.me',
-    packages=['pytact'],
+    packages=find_packages(),
     ext_modules=ext_modules)
