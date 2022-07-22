@@ -22,7 +22,6 @@ class FlowFromMarkers(TactOp):
     ----------
     marker_origin: Tuple[int, int]
         Location in frame of first marker, can be an estimate
-    marker_
     threshold_block_size: int, optional
     threshold_neg_bias: int, optional
     marker_neighborhood_size: int, optional
@@ -34,8 +33,6 @@ class FlowFromMarkers(TactOp):
 
     def __init__(self, **kwargs):
         super().__init__(kwargs)
-
-
 
     def __call__(self, sensor: Sensor) -> Flow:
         if sensor.marker_shape is None:

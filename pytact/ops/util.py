@@ -1,4 +1,5 @@
-    
+#/usr/bin/env python3
+
 def poisson_reconstruct(gradx, grady, boundarysrc): 
     # Thanks to Dr. Ramesh Raskar for providing the original matlab code from which this is derived
     # Dr. Raskar's version is available here: http://web.media.mit.edu/~raskar/photo/code.pdf
