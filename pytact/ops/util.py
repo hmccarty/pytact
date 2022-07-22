@@ -1,5 +1,28 @@
 #/usr/bin/env python3
 
+def find_markers(frame, block_size, neg_bias, neighborhood_size):
+    # Convert to grayscale and compute mask 
+    if frame.encoding == FrameEnc.BGR:
+        gray_im = cv2.cvtColor(frame.image, cv2.COLOR_BGR2GRAY)
+    elif frame.encoding != FrameEnc.GRAY:
+        gray_im = frame.image
+
+    im_mask = cv2.adaptiveThreshold(gray_im, 255,
+        cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, block_size, neg_bias)
+
+    # Find peaks
+    max = maximum_filter(im_mask, neighborhood_size)
+    maxima = im_mask == max
+    min = minimum_filter(im_mask, neighborhood_size)
+    diff = (max - min) > 1
+    maxima[diff == 0] = 0
+
+    # Label peaks as markers
+    labeled, n = ndimage.label(maxima)
+    xy = np.array(ndimage.center_of_mass(im_mask, labeled, range(1, n + 1)))
+    xy[:, [0, 1]] = xy[:, [1, 0]]
+    return xy
+
 def poisson_reconstruct(gradx, grady, boundarysrc): 
     # Thanks to Dr. Ramesh Raskar for providing the original matlab code from which this is derived
     # Dr. Raskar's version is available here: http://web.media.mit.edu/~raskar/photo/code.pdf

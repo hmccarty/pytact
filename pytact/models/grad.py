@@ -1,4 +1,10 @@
-class WangGradModel(nn.Module):
+import numpy as np
+import pandas as pd
+import torch.nn as nn
+from torch.utils.data import Dataset
+import torch.nn.functional as F_
+
+class MLPGradModel(nn.Module):
     """
     A 3-layer MLP to convert visuo-tactile pixels into depth gradients.
 

@@ -17,7 +17,7 @@ class FrameEnc(Enum):
 @dataclass
 class Frame:
     """Raw tactile array"""
-    encoding: FrameEncoding
+    encoding: FrameEnc
     image: np.ndarray # (height, width, 1-3)
 
     def clamp(self):
@@ -45,8 +45,8 @@ class Markers:
 @dataclass
 class Flow:
     """Matched markers between a reference and current frame"""
-    ref: GelsightMarkers
-    cur: GelsightMarkers
+    ref: Markers
+    cur: Markers
 
     def __post_init__(self):
         if len(self.ref.markers) != len(self.cur.markers):

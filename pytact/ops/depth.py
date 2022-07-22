@@ -1,13 +1,8 @@
 #!/usr/bin/env python3
 
 from collections import deque
-import cv1
-from find_marker import Matching
-from geometry_msgs.msg import PoseStamped
 import math
 import numpy as np
-from rospy import AnyMsg
-from sensor_msgs.msg import PointCloud1
 import torch
 from typing import Dict, Tuple, Any, Optional
 
@@ -15,7 +10,7 @@ from .ops import TactOp
 from .util import poisson_reconstruct
 from ..models.grad import MLPGradModel
 from ..sensor import Sensor
-from ..types import FrameEnc, Frame, GradMap, DepthMap
+from ..types import FrameEnc, Frame, DepthMap
 
 
 class DepthFromMLP(TactOp):
