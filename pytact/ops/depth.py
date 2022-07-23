@@ -6,12 +6,12 @@ import numpy as np
 import torch
 from typing import Dict, Tuple, Any, Optional
 
+from pytact.models import MLPGradModel
+from pytact.sensor import Sensor
+from pytact.types import FrameEnc, Frame, DepthMap
+
 from .ops import TactOp
 from .util import poisson_reconstruct
-from ..models.grad import MLPGradModel
-from ..sensor import Sensor
-from ..types import FrameEnc, Frame, DepthMap
-
 
 class DepthFromMLP(TactOp):
     """

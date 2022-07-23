@@ -3,17 +3,13 @@
 import cv2
 from marker_util import Matching
 import numpy as np
-from rospy import AnyMsg
-from scipy import ndimage
-from scipy.ndimage.filters import maximum_filter, minimum_filter
-from sensor_msgs.msg import PointCloud2, Image
 from typing import Dict, Tuple, Any, Optional
 
-# from pytact.sensor import Sensor
-# from pytact.types import FrameEnc, Flow
+from pytact.sensor import Sensor
+from pytact.types import FrameEnc, Flow
 
-# from .ops import TactOp
-# from .util import find_markers
+from .ops import TactOp
+from .util import find_markers
 
 class FlowFromMarkers(TactOp):
     """

@@ -1,11 +1,9 @@
-#!/usr/bin/env python3
-
 from abc import ABC, abstractmethod
 import cv2
-import time
 import threading
 from typing import Dict, Tuple, Any, Optional
 from copy import deepcopy
+import numpy as np
 
 from .types import FrameEnc, Frame, Markers
 
@@ -62,17 +60,15 @@ class GelsightR15(Sensor):
     sample_rate: float = 30.0
     marker_shape: Tuple[int, int] = (10, 12) # rows, cols
 
-    def __init__(self, **kwargs):
-        if "url" not in kwargs:
-            raise RuntimeError("Missing stream url.")
-        self._dev = cv2.VideoCapture(kwargs["url"])
+    def __init__(self, url: str, **kwargs):
+        self._dev = cv2.VideoCapture(url)
         self.size = (
             int(kwargs["width"]) if "width" in kwargs else self.size[0],
-            int(kwargs["height"]) if "height" in cfg else self.size[1],
+            int(kwargs["height"]) if "height" in kwargs else self.size[1],
         )
 
         self.output_coords = [(0, 0), (self.size[0], 0), self.size, (0, self.size[1])]
-        self._roi = cfg["roi"] if "roi" in cfg else None
+        self._roi = kwargs["roi"] if "roi" in kwargs else None
 
         self._is_running = True 
         self._frame = None
