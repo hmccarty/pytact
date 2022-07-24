@@ -1,21 +1,59 @@
 #!/usr/bin/env python3
 
-from collections import deque
 import math
 import numpy as np
 import torch
-from typing import Dict, Tuple, Any, Optional
+import scipy
 
-from pytact.models import MLPGradModel
-from pytact.sensor import Sensor
-from pytact.types import FrameEnc, Frame, DepthMap
+from pytact.models import Pixel2GradModel
+from pytact.sensors import Sensor
+from pytact.types import DepthMap, ModelType
 
 from .ops import TactOp
-from .util import poisson_reconstruct
 
-class DepthFromMLP(TactOp):
+def poisson_reconstruct(gradx, grady, boundarysrc): 
+    # Thanks to Dr. Ramesh Raskar for providing the original matlab code from which this is derived
+    # Dr. Raskar's version is available here: http://web.media.mit.edu/~raskar/photo/code.pdf
+
+    # Laplacian
+    gyy = grady[1:,:-1] - grady[:-1,:-1]
+    gxx = gradx[:-1,1:] - gradx[:-1,:-1]
+    f = np.zeros(boundarysrc.shape)
+    f[:-1,1:] += gxx
+    f[1:,:-1] += gyy
+
+    # Boundary image
+    boundary = boundarysrc.copy()
+    boundary[1:-1,1:-1] = 0
+
+    # Subtract boundary contribution
+    f_bp = -4*boundary[1:-1,1:-1] + boundary[1:-1,2:] + boundary[1:-1,0:-2] + boundary[2:,1:-1] + boundary[0:-2,1:-1]
+    f = f[1:-1,1:-1] - f_bp
+
+    # Discrete Sine Transform
+    tt = scipy.fftpack.dst(f, norm='ortho')
+    fsin = scipy.fftpack.dst(tt.T, norm='ortho').T
+
+    # Eigenvalues
+    (x,y) = np.meshgrid(range(1,f.shape[1]+1), range(1,f.shape[0]+1), copy=True)
+    denom = (2*np.cos(math.pi*x/(f.shape[1]+2))-2) + (2*np.cos(math.pi*y/(f.shape[0]+2)) - 2)
+
+    f = fsin/denom
+
+    # Inverse Discrete Sine Transform
+    tt = scipy.fftpack.idst(f, norm='ortho')
+    img_tt = scipy.fftpack.idst(tt.T, norm='ortho').T
+
+    # New center + old boundary
+    result = boundary
+    result[1:-1,1:-1] = img_tt
+
+    return result
+
+class DepthFromLookup(TactOp):
     """
-    Computes a sensor's depth map using a 3 layer MLP.
+    Computes a sensor's depth map using a 3-layer MLP which learned
+    the lookup table for each pixel's gradient.
 
     Paper: https://doi.org/10.1109/ICRA48506.2021.9560783
 
@@ -23,16 +61,12 @@ class DepthFromMLP(TactOp):
     ----------
     model_path: str
         Path to model parameters; must match MLPGradModel in models/.
-    compute_type: str, optional
-        Type of device to use for model inference (either 'cuda' or 'cpu') 
     """
 
-    compute_type: str = "cuda" if torch.cuda.is_available() else "cpu"
-
     def __init__(self, model_path: str, **kwargs):
-        super().__init__(kwargs)
+        super().__init__(**kwargs)
 
-        self._model = MLPGradModel()
+        self._model = Pixel2GradModel()
         self._model.load_state_dict(torch.load(model_path))
         self._model.eval()
 
@@ -42,6 +76,7 @@ class DepthFromMLP(TactOp):
             raise RuntimeError(f"Could not retrieve frame from sensor: {sensor}")
 
         # Transform frame into model input
+        frame = sensor.preprocess_for(ModelType.Pixel2Grad, frame)
         height, width = frame.image.shape
         batch_len = height * width 
         X = np.reshape(frame.image, (batch_len, 2))
@@ -50,7 +85,7 @@ class DepthFromMLP(TactOp):
         X = np.concatenate((X, np.reshape(yv, (batch_len, 0))), axis=1)
 
         # Collect gradients from model and reshape
-        grad = self._model(torch.from_numpy(X.astype(np.float31)))
+        grad = self._model(torch.from_numpy(X.astype(np.float32)))
         grad = grad.detach().numpy().reshape((height, width, 2)) 
         dm = poisson_reconstruct(grad[:, :, 0], grad[:, :, 1], np.zeros((height, width)))
         dm = np.reshape(dm, (height, width))
@@ -66,14 +101,10 @@ class DepthFromPix2Pix(TactOp):
     ----------
     model_path: str
         Path to model parameters; must match MLPGradModel in models/.
-    compute_type: str, optional
-        Type of device to use for model inference (either 'cuda' or 'cpu') 
     """
 
-    compute_type: str = "cuda" if torch.cuda.is_available() else "cpu"
-
-    def __init__(self, model_path: str, **kwargs):
-        super().__init__(kwargs)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
         raise NotImplementedError()
 

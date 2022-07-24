@@ -1,16 +1,15 @@
-import numpy as np
-import pandas as pd
 import torch.nn as nn
-from torch.utils.data import Dataset
 import torch.nn.functional as F_
+from pytact.types import ModelType
 
-class MLPGradModel(nn.Module):
+class Pixel2GradModel(nn.Module):
     """
     A 3-layer MLP to convert visuo-tactile pixels into depth gradients.
 
     Architecture: 5 (R, G, B, x, y) -> 64 -> 64 -> 64 -> 2 (gx, gy)
     """
-
+    
+    model_type = ModelType.Pixel2Grad
     dropout_p = 0.05
 
     def __init__(self):
@@ -30,4 +29,4 @@ class MLPGradModel(nn.Module):
         x = F_.relu(self.fc3(x))
         x = self.drop(x)
         return self.fc4(x)
-        
+ 

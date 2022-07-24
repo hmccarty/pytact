@@ -2,6 +2,11 @@ from dataclasses import dataclass
 from enum import Enum
 import numpy as np
 
+class ModelType(Enum):
+    """Supported models to be run on a sensor"""
+    Pixel2Grad = 1 # Small MLP to directly estimate a pixels gradient
+    P2PGrad = 2 # Uses Pix2Pix architecture to fully estimate an image's gradient
+
 class FrameEnc(Enum):
     """Supported encodings for frames"""
     BGR = 1 # 3 channels in blue, green, red order
@@ -16,7 +21,7 @@ class Frame:
     def clamp(self):
         """Limits image data by encoding"""
 
-        if encoding == FrameEnc.BGR or encoding == FrameEnc.MONO:
+        if self.encoding == FrameEnc.BGR or self.encoding == FrameEnc.MONO:
             self.image[self.image > 255] = 255
             self.image[self.image < 0] = 0
 
@@ -43,7 +48,7 @@ class Flow:
 
     def __post_init__(self):
         if len(self.ref.markers) != len(self.cur.markers):
-            raise ValueError(f"Reference and current markers have different sizes")
+            raise ValueError("Reference and current markers have different sizes")
 
 @dataclass
 class DepthMap:

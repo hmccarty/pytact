@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 
 from abc import ABC, abstractmethod
-import cv2
-import numpy as np
-from typing import Dict, Tuple, Any, Optional
-
-# from pytact.sensor import Sensor
+from pytact.sensors import Sensor
 
 class TactOp(ABC):
     """
@@ -14,8 +10,8 @@ class TactOp(ABC):
 
     def __init__(self, **kwargs):
         for k, v in kwargs.items():
-            setattr(self, k, v)
+            setattr(self, "_" + k, v)
 
     @abstractmethod
-    def __call__(self):
+    def __call__(self, sensor: Sensor):
         pass
