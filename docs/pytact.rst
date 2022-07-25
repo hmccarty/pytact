@@ -1,31 +1,26 @@
-pytact package
+PyTact Types
 ==============
-
-Subpackages
------------
 
 .. toctree::
    :maxdepth: 4
 
-   pytact.models
-   pytact.ops
-   pytact.sensors
+Model Types
+-----------
 
-Submodules
-----------
+.. autoclass:: pytact.types.ModelType
 
-pytact.types module
--------------------
+Frame Types
+-----------
+.. autoclass:: pytact.types.FrameEnc
 
-.. automodule:: pytact.types
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. autoclass:: pytact.types.Frame
 
-Module contents
----------------
+Depth Types
+-----------
+.. autoclass:: pytact.types.DepthMap
 
-.. automodule:: pytact
-   :members:
-   :undoc-members:
-   :show-inheritance:
+Marker Types
+-----------
+.. autoclass:: pytact.types.Markers
+
+.. autoclass:: pytact.types.Flow

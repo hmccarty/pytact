@@ -10,7 +10,10 @@ Welcome to pytact's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   modules
+   pytact
+   pytact.sensors
+   pytact.tasks
+   pytact.models
 
 Indices and tables
 ==================

@@ -13,7 +13,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../pytact'))
-sys.path.insert(0, os.path.abspath('../pytact/ops'))
+sys.path.insert(0, os.path.abspath('../pytact/tasks'))
 sys.path.insert(0, os.path.abspath('../pytact/models'))
 sys.path.insert(0, os.path.abspath('../pytact/sensors'))
 
