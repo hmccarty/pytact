@@ -7,10 +7,11 @@ import pytact
 import time
 
 parser = argparse.ArgumentParser(description='Record a sequence of sensor images')
-parser.add_argument('sensor', type=str, choices=['GelsightR15'], help='Sensor type to display')
-parser.add_argument('--url',  type=str, dest='url', default='',
+parser.add_argument('sensor', type=str, choices=pytact.sensors.get_sensor_names(),
+    help='Sensor type to display')
+parser.add_argument('--url',  type=str, dest='url', default=None,
     help='Location of sensor stream (if needed)')
-parser.add_argument('--roi', dest='roi', nargs=4,
+parser.add_argument('--roi', dest='roi', nargs=4, default=None,
     help='Region of interest in sensor frame, specify in order of top-left, top-right, ' +
         'bottom-right, and bottom-left. Format should be as follows: x,y x,y x,y x,y')
 parser.add_argument('--output', type=str, dest='output',
@@ -27,20 +28,7 @@ if not os.path.exists(args.output):
     print(f"Created output directory: {args.output}")
     os.makedirs(args.output)
 
-if args.sensor == 'GelsightR15': 
-    roi = None
-    if args.url == '':
-        print('A URL must be provided for GelsightR15')
-        exit()
-    elif args.roi:
-        def parse_coord(coord: str):
-            x, y = coord.split(',')
-            return int(float(x)), int(float(y))
-        
-        roi = [parse_coord(args.roi[0]), parse_coord(args.roi[1]),
-               parse_coord(args.roi[2]), parse_coord(args.roi[3])]
-
-    sensor = pytact.sensors.GelsightR15(args.url, roi=roi)
+sensor = pytact.sensors.sensor_from_args(args.sensor, **vars(args))
 
 while sensor.is_running():
     if time.time() - start > args.duration or i > args.count-1:
