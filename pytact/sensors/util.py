@@ -17,7 +17,7 @@ def sensor_from_args(sensor_name: str, **kwargs) -> Sensor:
                 return int(float(x)), int(float(y))
             roi = [parse_coord(kwargs["roi"][0]), parse_coord(kwargs["roi"][1]),
                    parse_coord(kwargs["roi"][2]), parse_coord(kwargs["roi"][3])]
-            return GelsightR15(kwargs["url"], roi)
+            return GelsightR15(kwargs["url"], roi=roi)
         else:
             return GelsightR15(kwargs["url"])
     else:
