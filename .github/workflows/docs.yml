@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: 3.8
       - name: Install
-        run: pip install .
+        run: pip install -e .
       - uses: ammaraskar/sphinx-action@master
         with:
           build-command: "make html" 
