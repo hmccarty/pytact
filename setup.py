@@ -4,7 +4,7 @@ from pybind11.setup_helpers import Pybind11Extension
 ext_modules = [
     Pybind11Extension(
         "marker_util",
-        ["pytact/ops/flow/matching.cpp"],
+        ["pytact/tasks/flow/matching.cpp"],
     ),
 ]
 
