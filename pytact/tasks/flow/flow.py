@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from marker_util import Matching
 from typing import Tuple
 import numpy as np
