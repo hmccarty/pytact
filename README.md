@@ -6,11 +6,6 @@ Provides a variety of algorithm implementations, scripts to train custom models,
 
 ## Installation
 
-To build the library, `pybind` is required:
-```bash
-python3 -m pip install pybind11
-```
-
 You can install this package using pip in the root directory:
 
 ```bash
