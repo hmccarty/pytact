@@ -9,16 +9,9 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v1
-      - name: Update packages
-        run: sudo apt update
-      - name: Setup Python3.8
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-      - name: Install
-        run: pip install -e .
       - uses: ammaraskar/sphinx-action@master
         with:
+          pre-build-command: "pip install -e ."
           build-command: "make html" 
           docs-folder: "docs/"
       - name: Commit documentation changes
