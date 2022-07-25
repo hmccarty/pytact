@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PyTact Tasks &mdash; pytact 0.0.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>PyTact Tasks &mdash; pytact 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -35,14 +37,14 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="pytact.html">PyTact Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pytact.sensors.html">PyTact Sensors</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PyTact Tasks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#task-base">Task Base</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#depth">Depth</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#flow">Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pytact.tasks.tasks">Task Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pytact.tasks.depth">Depth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pytact.tasks.flow.flow">Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#contact">Contact</a></li>
 </ul>
 </li>
@@ -73,22 +75,82 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="pytact-tasks">
-<h1>PyTact Tasks<a class="headerlink" href="#pytact-tasks" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="task-base">
-<h2>Task Base<a class="headerlink" href="#task-base" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="depth">
-<h2>Depth<a class="headerlink" href="#depth" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="flow">
-<h2>Flow<a class="headerlink" href="#flow" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="contact">
-<h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h2>
+  <section id="pytact-tasks">
+<h1>PyTact Tasks<a class="headerlink" href="#pytact-tasks" title="Permalink to this headline"></a></h1>
+<section id="module-pytact.tasks.tasks">
+<span id="task-base"></span><h2>Task Base<a class="headerlink" href="#module-pytact.tasks.tasks" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytact.tasks.tasks.Task">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pytact.tasks.tasks.</span></span><span class="sig-name descname"><span class="pre">Task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytact.tasks.tasks.Task" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>An operation to be performed on a tactile sensor.</p>
+</dd></dl>
+
+</section>
+<section id="module-pytact.tasks.depth">
+<span id="depth"></span><h2>Depth<a class="headerlink" href="#module-pytact.tasks.depth" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytact.tasks.depth.DepthFromLookup">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pytact.tasks.depth.</span></span><span class="sig-name descname"><span class="pre">DepthFromLookup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytact.tasks.depth.DepthFromLookup" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pytact.tasks.tasks.Task" title="pytact.tasks.tasks.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">pytact.tasks.tasks.Task</span></code></a></p>
+<p>Computes a sensor’s depth map using a 3-layer MLP which learned
+the lookup table for each pixel’s gradient.</p>
+<p>Paper: <a class="reference external" href="https://doi.org/10.1109/ICRA48506.2021.9560783">https://doi.org/10.1109/ICRA48506.2021.9560783</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_path</strong> (<em>str</em>) – Path to model parameters; must match MLPGradModel in models/.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pytact.tasks.depth.DepthFromPix2Pix">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pytact.tasks.depth.</span></span><span class="sig-name descname"><span class="pre">DepthFromPix2Pix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytact.tasks.depth.DepthFromPix2Pix" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pytact.tasks.tasks.Task" title="pytact.tasks.tasks.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">pytact.tasks.tasks.Task</span></code></a></p>
+<p>Computes a sensor’s depth map using a Pix2Pix architecture.</p>
+<p>TODO: Implement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_path</strong> (<em>str</em>) – Path to model parameters; must match MLPGradModel in models/.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pytact.tasks.depth.poisson_reconstruct">
+<span class="sig-prename descclassname"><span class="pre">pytact.tasks.depth.</span></span><span class="sig-name descname"><span class="pre">poisson_reconstruct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gradx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grady</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundarysrc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytact.tasks.depth.poisson_reconstruct" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-pytact.tasks.flow.flow">
+<span id="flow"></span><h2>Flow<a class="headerlink" href="#module-pytact.tasks.flow.flow" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytact.tasks.flow.flow.FlowFromMarkers">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pytact.tasks.flow.flow.</span></span><span class="sig-name descname"><span class="pre">FlowFromMarkers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">marker_shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker_origin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker_dist</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytact.tasks.flow.flow.FlowFromMarkers" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pytact.tasks.tasks.Task" title="pytact.tasks.tasks.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">pytact.tasks.tasks.Task</span></code></a></p>
+<p>Uses markers to compute a vector field. Can be used for estimating shear forces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>marker_shape</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – Number of markers per row and column</p></li>
+<li><p><strong>marker_origin</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – Location in frame of first marker</p></li>
+<li><p><strong>marker_dist</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – Average row and column difference of the markers</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pytact.tasks.flow.flow.FlowFromMarkers.reset_matching">
+<span class="sig-name descname"><span class="pre">reset_matching</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pytact.tasks.flow.flow.FlowFromMarkers.reset_matching" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline"></a></h2>
 <p>Coming soon</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

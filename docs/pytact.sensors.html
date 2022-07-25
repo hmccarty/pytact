@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PyTact Sensors &mdash; pytact 0.0.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>PyTact Sensors &mdash; pytact 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -35,11 +37,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="pytact.html">PyTact Types</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PyTact Sensors</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#sensor-base">Sensor Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pytact.sensors.sensors">Sensor Base</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#gelsight-r1-5">Gelsight R1.5</a></li>
 </ul>
 </li>
@@ -71,15 +73,119 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="pytact-sensors">
-<h1>PyTact Sensors<a class="headerlink" href="#pytact-sensors" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="sensor-base">
-<h2>Sensor Base<a class="headerlink" href="#sensor-base" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="gelsight-r1-5">
-<h2>Gelsight R1.5<a class="headerlink" href="#gelsight-r1-5" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+  <section id="pytact-sensors">
+<h1>PyTact Sensors<a class="headerlink" href="#pytact-sensors" title="Permalink to this headline"></a></h1>
+<section id="module-pytact.sensors.sensors">
+<span id="sensor-base"></span><h2>Sensor Base<a class="headerlink" href="#module-pytact.sensors.sensors" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytact.sensors.sensors.Sensor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pytact.sensors.sensors.</span></span><span class="sig-name descname"><span class="pre">Sensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytact.sensors.sensors.Sensor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pytact.sensors.sensors.Sensor.get_frame">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">get_frame</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pytact.html#pytact.types.Frame" title="pytact.types.Frame"><span class="pre">pytact.types.Frame</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pytact.sensors.sensors.Sensor.get_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytact.sensors.sensors.Sensor.get_markers">
+<span class="sig-name descname"><span class="pre">get_markers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pytact.html#pytact.types.Markers" title="pytact.types.Markers"><span class="pre">pytact.types.Markers</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pytact.sensors.sensors.Sensor.get_markers" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytact.sensors.sensors.Sensor.is_running">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">is_running</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pytact.sensors.sensors.Sensor.is_running" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pytact.sensors.sensors.Sensor.marker_shape">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">marker_shape</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pytact.sensors.sensors.Sensor.marker_shape" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytact.sensors.sensors.Sensor.preprocess_for">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">preprocess_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="pytact.html#pytact.types.ModelType" title="pytact.types.ModelType"><span class="pre">pytact.types.ModelType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="pytact.html#pytact.types.Frame" title="pytact.types.Frame"><span class="pre">pytact.types.Frame</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pytact.html#pytact.types.Frame" title="pytact.types.Frame"><span class="pre">pytact.types.Frame</span></a></span></span><a class="headerlink" href="#pytact.sensors.sensors.Sensor.preprocess_for" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pytact.sensors.sensors.Sensor.supported_models">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">supported_models</span></span><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pytact.html#pytact.types.ModelType" title="pytact.types.ModelType"><span class="pre">pytact.types.ModelType</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pytact.sensors.sensors.Sensor.supported_models" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pytact.sensors.sensors.UnsupportedModelError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">pytact.sensors.sensors.</span></span><span class="sig-name descname"><span class="pre">UnsupportedModelError</span></span><a class="headerlink" href="#pytact.sensors.sensors.UnsupportedModelError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raised when a sensor tries to preprocess for an unsupported model.</p>
+</dd></dl>
+
+</section>
+<section id="gelsight-r1-5">
+<h2>Gelsight R1.5<a class="headerlink" href="#gelsight-r1-5" title="Permalink to this headline"></a></h2>
+<span class="target" id="module-pytact.sensors.gelsight"></span><dl class="py class">
+<dt class="sig sig-object py" id="pytact.sensors.gelsight.GelsightR15">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pytact.sensors.gelsight.</span></span><span class="sig-name descname"><span class="pre">GelsightR15</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytact.sensors.gelsight.GelsightR15" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pytact.sensors.sensors.Sensor" title="pytact.sensors.sensors.Sensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">pytact.sensors.sensors.Sensor</span></code></a></p>
+<p>Retrieves images from an http stream and assumes markers are present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – URL of the HTTP stream</p></li>
+<li><p><strong>size</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>optional</em>) – Downscaled resolution of image (default (160, 120))</p></li>
+<li><p><strong>roi</strong> (<em>List</em><em>[</em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>...</em><em>]</em><em>, </em><em>optional</em>) – Sequence of coordinates that indicate the sensor frame’s region of interest.
+List should include 4 coordinates in order of the top-left, top-right,
+bottom-right and bottom-left (default frame is left as is).</p></li>
+<li><p><strong>encoding</strong> (<a class="reference internal" href="pytact.html#pytact.types.FrameEnc" title="pytact.types.FrameEnc"><em>FrameEnc</em></a><em>, </em><em>optional</em>) – Encoding to process frames as (default FrameEnc.BGR)</p></li>
+<li><p><strong>sample_rate</strong> (<em>float</em><em>, </em><em>optional</em>) – Rate to capture new frames at (default 30.0)</p></li>
+<li><p><strong>marker_shape</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>optional</em>) – Number of marker rows and columns (default (10, 12))</p></li>
+<li><p><strong>diff_intensity</strong> (<em>float</em><em>, </em><em>optional</em>) – Amount to scale pixel-wise difference for preprocessing steps (default 3.0)</p></li>
+<li><p><strong>marker_block_size</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>marker_neg_bias</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>marker_neighborhood_size</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pytact.sensors.gelsight.GelsightR15.get_frame">
+<span class="sig-name descname"><span class="pre">get_frame</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pytact.html#pytact.types.Frame" title="pytact.types.Frame"><span class="pre">pytact.types.Frame</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pytact.sensors.gelsight.GelsightR15.get_frame" title="Permalink to this definition"></a></dt>
+<dd><p>Returns frame collected in the last sample.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytact.sensors.gelsight.GelsightR15.get_markers">
+<span class="sig-name descname"><span class="pre">get_markers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pytact.html#pytact.types.Markers" title="pytact.types.Markers"><span class="pre">pytact.types.Markers</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pytact.sensors.gelsight.GelsightR15.get_markers" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytact.sensors.gelsight.GelsightR15.is_running">
+<span class="sig-name descname"><span class="pre">is_running</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pytact.sensors.gelsight.GelsightR15.is_running" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pytact.sensors.gelsight.GelsightR15.marker_shape">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">marker_shape</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pytact.sensors.gelsight.GelsightR15.marker_shape" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytact.sensors.gelsight.GelsightR15.preprocess_for">
+<span class="sig-name descname"><span class="pre">preprocess_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="pytact.html#pytact.types.ModelType" title="pytact.types.ModelType"><span class="pre">pytact.types.ModelType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="pytact.html#pytact.types.Frame" title="pytact.types.Frame"><span class="pre">pytact.types.Frame</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="pytact.html#pytact.types.Frame" title="pytact.types.Frame"><span class="pre">pytact.types.Frame</span></a></span></span><a class="headerlink" href="#pytact.sensors.gelsight.GelsightR15.preprocess_for" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytact.sensors.gelsight.GelsightR15.set_reference">
+<span class="sig-name descname"><span class="pre">set_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="pytact.html#pytact.types.Frame" title="pytact.types.Frame"><span class="pre">pytact.types.Frame</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytact.sensors.gelsight.GelsightR15.set_reference" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pytact.sensors.gelsight.GelsightR15.supported_models">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">supported_models</span></span><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="pytact.html#pytact.types.ModelType" title="pytact.types.ModelType"><span class="pre">pytact.types.ModelType</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pytact.sensors.gelsight.GelsightR15.supported_models" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
 
 
            </div>

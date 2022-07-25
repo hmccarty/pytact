@@ -1,0 +1,21 @@
+pytact.tasks.flow package
+=========================
+
+Submodules
+----------
+
+pytact.tasks.flow.flow module
+-----------------------------
+
+.. automodule:: pytact.tasks.flow.flow
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pytact.tasks.flow
+   :members:
+   :undoc-members:
+   :show-inheritance:

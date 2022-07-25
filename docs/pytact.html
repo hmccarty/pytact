@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PyTact Types &mdash; pytact 0.0.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <title>PyTact Types &mdash; pytact 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -35,7 +37,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PyTact Types</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#model-types">Model Types</a></li>
@@ -73,23 +75,59 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="pytact-types">
-<h1>PyTact Types<a class="headerlink" href="#pytact-types" title="Permalink to this headline">¶</a></h1>
+  <section id="pytact-types">
+<h1>PyTact Types<a class="headerlink" href="#pytact-types" title="Permalink to this headline"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="model-types">
-<h2>Model Types<a class="headerlink" href="#model-types" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="frame-types">
-<h2>Frame Types<a class="headerlink" href="#frame-types" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="depth-types">
-<h2>Depth Types<a class="headerlink" href="#depth-types" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="marker-types">
-<h2>Marker Types<a class="headerlink" href="#marker-types" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+<section id="model-types">
+<h2>Model Types<a class="headerlink" href="#model-types" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytact.types.ModelType">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pytact.types.</span></span><span class="sig-name descname"><span class="pre">ModelType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytact.types.ModelType" title="Permalink to this definition"></a></dt>
+<dd><p>Supported models to be run on a sensor</p>
+</dd></dl>
+
+</section>
+<section id="frame-types">
+<h2>Frame Types<a class="headerlink" href="#frame-types" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytact.types.FrameEnc">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pytact.types.</span></span><span class="sig-name descname"><span class="pre">FrameEnc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytact.types.FrameEnc" title="Permalink to this definition"></a></dt>
+<dd><p>Supported encodings for frames</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pytact.types.Frame">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pytact.types.</span></span><span class="sig-name descname"><span class="pre">Frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pytact.types.FrameEnc" title="pytact.types.FrameEnc"><span class="pre">pytact.types.FrameEnc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytact.types.Frame" title="Permalink to this definition"></a></dt>
+<dd><p>Raw tactile array</p>
+</dd></dl>
+
+</section>
+<section id="depth-types">
+<h2>Depth Types<a class="headerlink" href="#depth-types" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytact.types.DepthMap">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pytact.types.</span></span><span class="sig-name descname"><span class="pre">DepthMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytact.types.DepthMap" title="Permalink to this definition"></a></dt>
+<dd><p>3d data of a frame</p>
+</dd></dl>
+
+</section>
+<section id="marker-types">
+<h2>Marker Types<a class="headerlink" href="#marker-types" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytact.types.Markers">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pytact.types.</span></span><span class="sig-name descname"><span class="pre">Markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">markers</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytact.types.Markers" title="Permalink to this definition"></a></dt>
+<dd><p>Key areas of interest within a frame</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pytact.types.Flow">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pytact.types.</span></span><span class="sig-name descname"><span class="pre">Flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pytact.types.Markers" title="pytact.types.Markers"><span class="pre">pytact.types.Markers</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cur</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pytact.types.Markers" title="pytact.types.Markers"><span class="pre">pytact.types.Markers</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pytact.types.Flow" title="Permalink to this definition"></a></dt>
+<dd><p>Matched markers between a reference and current frame</p>
+</dd></dl>
+
+</section>
+</section>
 
 
            </div>
