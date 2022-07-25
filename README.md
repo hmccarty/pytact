@@ -4,6 +4,8 @@ Sensor-agnostic library for interfacing with visuo-tactile sensors.
 
 Provides a variety of algorithm implementations, scripts to train custom models, and visualizations.
 
+Used in the [gelsight_ros](https://github.com/hmccarty/gelsight-ros) package.
+
 ## Installation
 
 You can install this package using pip in the root directory:
