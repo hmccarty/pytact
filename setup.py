@@ -14,4 +14,7 @@ setup(name='Pytact',
     author='Harrison McCarty',
     author_email='hmccarty@pm.me',
     packages=find_packages(),
-    ext_modules=ext_modules)
+    ext_modules=ext_modules,
+    install_requires=['numpy', 'opencv-python', 'scipy', 'torch'],
+    python_requires='>=3.8',
+    )
