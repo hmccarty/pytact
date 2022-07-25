@@ -29,6 +29,8 @@ python3 scripts/<script>.py -h
 
 Create a new file in `pytact/sensors` and implement the `Sensor` base class.
 
+Update `get_sensor_names` and `sensor_from_args` in `pytact/sensors/util.py` to allow for dynamic creation.
+
 ## Adding tasks
 
 Create a new file in `pytact/tasks` and implement the `Task` base class.

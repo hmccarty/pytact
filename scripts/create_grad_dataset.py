@@ -25,7 +25,7 @@ Gradients are estimated using the provided parameters about the sphere's actual 
 parser.add_argument('input_path', type=str, help='Path to read images from')
 parser.add_argument('ball_radius', type=float, help='Radius of ball used in data collection (mm)')
 parser.add_argument('mmpp', type=float, help='Measure of mm per pixel')
-parser.add_argument('sensor', type=str, choices=['GelsightR15'],
+parser.add_argument('sensor', type=str, choices=pytact.sensors.get_sensor_names(),
     help='Sensor that images were collected from')
 parser.add_argument('--output_path', type=str, dest='output',
     default=os.getcwd(), help='Path to save CSV dataset to')
@@ -33,14 +33,11 @@ parser.add_argument('--amt-empty', type=float, dest='amt_empty',
     default=0.05, help='Amount of empty data points to include in dataset')
 args = parser.parse_args()
 
+sensor = pytact.sensors.sensor_from_args(args.sensor, **vars(args))
+
 # Store CLI args
 radius = args.ball_radius / 1000.0
 mpp = args.mmpp / 1000.0
-if args.sensor == "GelsightR15":
-    sensor = pytact.sensors.GelsightR15("")
-else:
-    print(f"Sensor type not recognized: {args.sensor}")
-    exit()
 
 # Setup dataset file
 output_file = args.output + f"/data-{dt.now().strftime('%H-%M-%S')}.csv"

@@ -38,6 +38,7 @@ class GelsightR15(Sensor):
 
     _encoding = FrameEnc.BGR
     _size: Tuple[int, int] = (120, 160) # width, height
+    _roi: Optional[List[Tuple[int, int]]] = None
     _sample_rate: float = 30.0
     _diff_intensity: float = 3.0
     
