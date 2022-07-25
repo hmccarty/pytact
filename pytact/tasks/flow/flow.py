@@ -7,10 +7,9 @@ import numpy as np
 from pytact.sensors import Sensor
 from pytact.types import Flow, Markers
 
-from pytact.ops import TactOp
+from pytact.tasks import Task
 
-
-class FlowFromMarkers(TactOp):
+class FlowFromMarkers(Task):
     """
     Uses markers to compute a vector field. Can be used for estimating shear forces.
 
@@ -48,6 +47,9 @@ class FlowFromMarkers(TactOp):
 
     def __call__(self, sensor: Sensor) -> Flow:
         marker_shape = sensor.marker_shape
+        if marker_shape is None:
+            raise RuntimeError(f"Marker shape could not be retrieved from sensor: {sensor}")
+
         markers = sensor.get_markers()
         if markers is None:
             raise RuntimeError(f"Markers could not be retrieved from sensor: {sensor}")
@@ -65,7 +67,8 @@ class FlowFromMarkers(TactOp):
         cur_markers = Markers(marker_shape[0], marker_shape[1], np.hstack((Cx_t, Cy_t)))
 
         self._flow = Flow(ref_markers, cur_markers)
-        vec_field = self._flow.cur.markers - self._flow.ref.markers
-        if np.mean(vec_field) <= self._error_threshold: # hack to determine if calibration is incorrect
+        displacement: float = np.mean(self._flow.cur.markers - self._flow.ref.markers)
+        if np.mean(displacement, dtype=np.float64) <= self._error_threshold: # hack to determine if calibration is incorrect
             self.reset_matching()
+            return self.__call__(sensor)
         return self._flow

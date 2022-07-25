@@ -9,7 +9,7 @@ from pytact.models import Pixel2GradModel
 from pytact.sensors import Sensor
 from pytact.types import DepthMap, ModelType
 
-from .ops import TactOp
+from .tasks import Task
 
 def poisson_reconstruct(gradx, grady, boundarysrc): 
     # Thanks to Dr. Ramesh Raskar for providing the original matlab code from which this is derived
@@ -50,7 +50,7 @@ def poisson_reconstruct(gradx, grady, boundarysrc):
 
     return result
 
-class DepthFromLookup(TactOp):
+class DepthFromLookup(Task):
     """
     Computes a sensor's depth map using a 3-layer MLP which learned
     the lookup table for each pixel's gradient.
@@ -79,7 +79,7 @@ class DepthFromLookup(TactOp):
         frame = sensor.preprocess_for(ModelType.Pixel2Grad, frame)
         height, width = frame.image.shape
         batch_len = height * width 
-        X = np.reshape(frame.image, (batch_len, 2))
+        X = frame.image.reshape((batch_len, 2))
         xv, yv = np.meshgrid(np.arange(height), np.arange(width))
         X = np.concatenate((X, np.reshape(xv, (batch_len, 0))), axis=1)
         X = np.concatenate((X, np.reshape(yv, (batch_len, 0))), axis=1)
@@ -91,7 +91,7 @@ class DepthFromLookup(TactOp):
         dm = np.reshape(dm, (height, width))
         return DepthMap(dm)
 
-class DepthFromPix2Pix(TactOp):
+class DepthFromPix2Pix(Task):
     """
     Computes a sensor's depth map using a Pix2Pix architecture.
 

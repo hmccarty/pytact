@@ -82,7 +82,7 @@ while len(imgs) > 0:
     # Collect next frame and preprocess using sensor
     img = cv2.imread(imgs[0], cv2.IMREAD_COLOR)
     current_frame = pytact.types.Frame(pytact.types.FrameEnc.BGR, img)
-    current_frame = sensor.preprocess_for(pytact.types.ModelType.MLPGrad, current_frame)
+    current_frame = sensor.preprocess_for(pytact.types.ModelType.Pixel2Grad, current_frame)
 
     # Convert to grayscale and find circles using hough transform
     grayscale_image = cv2.cvtColor(current_frame.image, cv2.COLOR_BGR2GRAY)
@@ -103,6 +103,10 @@ while len(imgs) > 0:
     while True:
         k = cv2.waitKey(1)
         if k == ord('y'):
+            if circle is None:
+                print("No circle selected.")
+                continue
+
             # Find distance in meters from circle radius
             x = np.arange(current_frame.image.shape[1])
             y = np.arange(current_frame.image.shape[0])

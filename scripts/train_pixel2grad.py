@@ -89,7 +89,7 @@ train_dataloader = DataLoader(trainset, batch_size=args.batch_size, shuffle=True
 test_dataloader = DataLoader(testset, batch_size=args.batch_size)
 
 # Initiate model and optimizer
-model = pytact.models.MLPGradModel().to(device)
+model = pytact.models.Pixel2GradModel().to(device)
 loss_fn = nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=args.learning_rate)
 

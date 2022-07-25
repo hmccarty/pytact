@@ -3,7 +3,7 @@
 from abc import ABC, abstractmethod
 from pytact.sensors import Sensor
 
-class TactOp(ABC):
+class Task(ABC):
     """
     An operation to be performed on a tactile sensor.
     """

@@ -34,9 +34,9 @@ class Sensor(ABC):
         pass
 
     @abstractmethod
-    def preprocess_for(self, model: ModelType, frame: Frame) -> Optional[Frame]:
+    def preprocess_for(self, model: ModelType, frame: Frame) -> Frame:
         pass
 
     """ Optional methods """
-    def get_markers(self) -> Markers:
+    def get_markers(self) -> Optional[Markers]:
         raise NotImplementedError()

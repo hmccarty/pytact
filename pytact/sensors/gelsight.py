@@ -97,12 +97,12 @@ class GelsightR15(Sensor):
     def is_running(self):
         return self.is_running
 
-    def preprocess_for(self, model: ModelType, frame: Frame) -> Optional[Frame]:
+    def preprocess_for(self, model: ModelType, frame: Frame) -> Frame:
         if model == ModelType.Pixel2Grad:
             if self._ref is None:
                 self._ref = deepcopy(frame)
                 if self._ref is None:
-                    return None 
+                    raise RuntimeError(f"GelsightR15: unable to copy frame")
             
             image = ((frame.image * 1.0) - self._ref.image) * self._diff_intensity
             image[image > 255] = 255
