@@ -17,7 +17,7 @@ setup(name='Pytact',
     ext_modules=ext_modules,
     install_requires=['numpy', 'opencv-python', 'scipy', 'torch'],
     python_requires='>=3.8',
-    extra_require=  {
+    extras_require={
         'testing': [
             'pytest',
             'mypy',

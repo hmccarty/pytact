@@ -83,6 +83,9 @@ while len(imgs) > 0:
     img = cv2.imread(imgs[0], cv2.IMREAD_COLOR)
     current_frame = pytact.types.Frame(pytact.types.FrameEnc.BGR, img)
     current_frame = sensor.preprocess_for(pytact.types.ModelType.Pixel2Grad, current_frame)
+    if len(current_frame.image.shape) != 2:
+        print(f"Sensor image has unxpected shape: {current_frame.image.shape}")
+        continue
 
     # Convert to grayscale and find circles using hough transform
     grayscale_image = cv2.cvtColor(current_frame.image, cv2.COLOR_BGR2GRAY)
@@ -108,9 +111,9 @@ while len(imgs) > 0:
                 continue
 
             # Find distance in meters from circle radius
-            x = np.arange(current_frame.image.shape[1])
-            y = np.arange(current_frame.image.shape[0])
-            xv, yv = np.meshgrid(x, y)
+            x_range = np.arange(current_frame.image.shape[1])
+            y_range = np.arange(current_frame.image.shape[0])
+            xv, yv = np.meshgrid(x_range, y_range)
             gx = (circle[0] - xv) * mpp
             gy = (circle[1] - yv) * mpp
             
@@ -122,6 +125,7 @@ while len(imgs) > 0:
             gy = np.where(dist_from_im > 0.0, -gy/np.sqrt(np.abs(dist_from_real)), 0.0)
 
             # Turn gradients into dataset labels
+
             labels = []
             for x in range(current_frame.image.shape[1]):
                 for y in range(current_frame.image.shape[0]):
