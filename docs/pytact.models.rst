@@ -1,21 +1,10 @@
-pytact.models package
+PyTact Models
 =====================
 
-Submodules
-----------
+Pixel2Grad Model
+-----------
 
-pytact.models.grad module
--------------------------
-
-.. automodule:: pytact.models.grad
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: pytact.models
+.. autoclass:: pytact.models.Pixel2GradModel
    :members:
    :undoc-members:
    :show-inheritance:

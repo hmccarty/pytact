@@ -1,29 +1,21 @@
-pytact.sensors package
+PyTact Sensors
 ======================
 
-Submodules
-----------
+.. autofunction:: pytact.sensors.get_sensor_names
 
-pytact.sensors.gelsight module
-------------------------------
-
-.. automodule:: pytact.sensors.gelsight
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pytact.sensors.sensors module
------------------------------
+Sensor Base
+-----------
 
 .. automodule:: pytact.sensors.sensors
    :members:
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
+Gelsight R1.5
+-----------
 
-.. automodule:: pytact.sensors
+.. automodule:: pytact.sensors.gelsight
    :members:
    :undoc-members:
    :show-inheritance:
+
