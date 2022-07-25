@@ -5,10 +5,10 @@ jobs:
   docs:
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v1
       - uses: ammaraskar/sphinx-action@master
         with:
+          build-command: "make html" 
           docs-folder: "docs/"
       - name: Commit documentation changes
         run: |
