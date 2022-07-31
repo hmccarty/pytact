@@ -51,7 +51,8 @@ class GelsightR15(Sensor):
         super().__init__(**kwargs)
 
         self._dev = cv2.VideoCapture(url)
-        self.output_coords = [(0, 0), (self._size[1], 0), (self._size[1], self._size[0]), (0, self._size[0])]
+        self.output_coords = [(0, 0), (self._size[1], 0),
+            (self._size[1], self._size[0]), (0, self._size[0])]
         
         # Start frame sampling 
         self._is_running: bool = True 

@@ -91,7 +91,7 @@ class DepthFromLookup(Task):
 
 class DepthFromPix2Pix(Task):
     """
-    Computes a sensor's depth map using a Pix2Pix architecture.
+    Computes a sensor's depth map using a Pix2Pix model.
 
     TODO: Implement.
 
