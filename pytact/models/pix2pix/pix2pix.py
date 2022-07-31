@@ -40,9 +40,6 @@ class Pix2PixModel(Model):
     def run_epoch(self, dataloader: DataLoader):
         size = len(dataloader.dataset)
         
-        # TODO: What do? 
-        # model.train()
-        
         for batch, (X, y) in enumerate(dataloader):
             X_real, y_real = X.to(self.device), y.to(self.device)
 
