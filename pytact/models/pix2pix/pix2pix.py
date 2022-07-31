@@ -1,7 +1,8 @@
 import torch.nn as nn
-import torch.nn.functional as F_
+from torch.util.data import DataLoader
 from pytact.models import Model
 from pytact.types import ModelType
+from .networks import UnetGenerator, PatchGANDescrimator
 
 class Pix2PixModel(Model):
     """
@@ -9,9 +10,20 @@ class Pix2PixModel(Model):
     """
     
     model_type = ModelType.P2PGrad
+    lr: float = 2e-4
+    beta_1: float = 0.5
+    beta_2: float = 0.999
 
-    def __init__(self):
+    def __init__(self, in_channels: int, out_channels: int, train: bool = True):
         super().__init__()
+        self.gen = UnetGenerator(in_channels, out_channels)
+        
+        self.train = train
+        if train:
+            self.desc = PatchGANDescrimator(in_channels)
 
-    def forward(self, x):
+    def __call__(self, x):
+        pass
+
+    def run_epoch(self, dataloader: DataLoader):
         pass
