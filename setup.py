@@ -9,7 +9,7 @@ ext_modules = [
 ]
 
 setup(name='Pytact',
-    version='0.1',
+    version='0.1.0',
     description='Visuo-tactile sensor interface',
     author='Harrison McCarty',
     author_email='hmccarty@pm.me',

@@ -1,8 +1,8 @@
 import torch.nn as nn
-from torch.util.data import DataLoader
+from torch.utils.data import DataLoader
 from pytact.models import Model
 from pytact.types import ModelType
-from .networks import UnetGenerator, PatchGANDescrimator
+from .networks import UnetGenerator, PatchGANDescriminator
 
 class Pix2PixModel(Model):
     """
@@ -20,7 +20,7 @@ class Pix2PixModel(Model):
         
         self.train = train
         if train:
-            self.desc = PatchGANDescrimator(in_channels)
+            self.desc = PatchGANDescriminator(in_channels)
 
     def __call__(self, x):
         pass
