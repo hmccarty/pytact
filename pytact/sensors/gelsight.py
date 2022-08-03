@@ -51,6 +51,9 @@ class GelsightR15(Sensor):
         super().__init__(**kwargs)
 
         self._dev = cv2.VideoCapture(url)
+        if not self._dev.isOpened():
+            raise IOError("Could not open sensor capture.")
+
         self.output_coords = [(0, 0), (self._size[1], 0),
             (self._size[1], self._size[0]), (0, self._size[0])]
         

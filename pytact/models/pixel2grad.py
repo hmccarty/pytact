@@ -1,8 +1,7 @@
 import torch.nn as nn
-from torch.util.data import DataLoader
-
-from .model import Model
+from torch.utils.data import DataLoader
 from pytact.types import ModelType
+from .model import Model
 
 class Pixel2GradNetwork(nn.Module):
     dropout_p = 0.05

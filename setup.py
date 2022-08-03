@@ -9,13 +9,13 @@ ext_modules = [
 ]
 
 setup(name='Pytact',
-    version='0.1',
+    version='0.1.0',
     description='Visuo-tactile sensor interface',
     author='Harrison McCarty',
     author_email='hmccarty@pm.me',
     packages=find_packages(),
     ext_modules=ext_modules,
-    install_requires=['numpy', 'opencv-python', 'scipy', 'torch'],
+    install_requires=['numpy', 'opencv-python', 'scipy', 'torch', 'torchvision'],
     python_requires='>=3.8',
     extras_require={
         'testing': [

@@ -1,11 +1,11 @@
 import torch
 import torch.nn as nn
+from torch.utils.data import DataLoader
 from torch.optim import Adam
-from torch.util.data import DataLoader
 from pytact.models import Model
 from pytact.types import ModelType
 from typing import Tuple
-from .networks import UnetGenerator, PatchGANDescrimator
+from .networks import UnetGenerator, PatchGANDescriminator
 
 class Pix2PixModel(Model):
     """
@@ -20,11 +20,11 @@ class Pix2PixModel(Model):
     def __init__(self, in_channels: int, out_channels: int, is_train: bool = True):
         super().__init__()
         self.device = torch.device(self.device_type) 
-        self.G = UnetGenerator(in_channels, out_channels)
+        self.G = UnetGenerator(in_channels, out_channels).to(self.device)
         
         self.is_train = is_train
         if self.is_train:
-            self.D = PatchGANDescrimator(in_channels)
+            self.D = PatchGANDescrimator(in_channels).to(self.device)
 
             # Optimizers
             self.G_opt = Adam(self.G.parameters(), lr=self.lr, betas=self.betas)
@@ -73,3 +73,6 @@ class Pix2PixModel(Model):
                 loss_log = f"G loss: {G_loss.item()}, D loss: {D_loss.item()} "
                 loss_log += f"[{batch * len(X):>5d} / {size:>5d}]"
                 print(loss_log)
+
+    def save(path: str):
+        torch.save(self.G.state_dict(), output_file)
